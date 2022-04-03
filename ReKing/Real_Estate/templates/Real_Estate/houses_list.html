@@ -1,0 +1,94 @@
+{% extends "Real_Estate/layout.html" %}
+{% load static %}
+
+{% block body %}
+{{cities}}
+{% if search %}
+<div class="container text-center p-3">
+    <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Εξερεύνηση</a>
+  </div>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      
+          <form action="{% url 'search' %}" method="POST" class="row g-3">
+              {% csrf_token %}
+            <div class="form-floating mb-3 col-md-4">
+              <div class="input-group">
+                <select class="form-select" aria-label="Default select example" name="type">
+                    <option selected disabled>Open this select menu</option>
+                    {% for choice in choices %}
+                    <option {% if type == choice.0 %} selected {% endif %} value="{{ choice.0 }}">{{ choice.1 }}</option>
+                    {% endfor %}
+                  </select>
+              </div>
+            </div>
+            <div class="form-floating col-md-4">
+              <div class="input-group">
+                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Περιοχή.." name="city" value="{{ city }}">
+                <datalist id="datalistOptions">
+                    {% for city in cities %}
+                    <option value="{{city}}">
+                    {% endfor %}
+                </datalist>
+              </div>
+            </div>
+            <div class="form-floating col-md-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="έως.." name="price" value="{{ price }}">
+              <span class="input-group-text">€</span>
+            </div>
+          </div>
+          <div class="form-floating col-md-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="έως.." name="area" value="{{ area }}">
+              <span class="input-group-text">τ.μ</span>
+            </div>
+          </div>
+            <div class="container text-center">
+              <button type="submit" class="btn btn-success mb-3 btn-lg">Αναζήτηση</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="container my-4">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for house in houses %}
+    <div class="col">
+        <div class="card">
+            <a class="link-dark" href="{%url 'house' house.id %}"><img src="{{house.image}}" class="img-fluid rounded-start" alt="..."></a>
+            <div class="card-body">
+              <a class="link-dark" href="{%url 'house' house.id %}"><h3 class="card-title">{{house.price}}€</h3></a>
+              <p class="card-text">{{house.type}} / {{house.area}} τ.μ.</p>
+              <p class="card-text">{{house.city}}</p>
+              <p class="card-text text-end"><small class="text-muted"><a href="#" class="link-secondary">Τοποθεσία</a></small></p>
+            </div>
+        </div>
+      </div> 
+    {% endfor %}
+  </div>
+</div>
+
+<!--
+{% for house in houses %}
+
+<div class="card m-5" style="max-width:100%">
+    <div class="row g-0">
+      <div class="col-md-3">
+        <a class="link-dark" href="{%url 'house' house.id %}"><img src="{{house.image}}" class="img-fluid rounded-start" alt="..."></a>
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+            <a class="link-dark" href="{%url 'house' house.id %}"><h3 class="card-title">{{house.price}}</h3></a>
+          <p class="card-text">{{house.description}}</p>
+          <p class="card-text"><small class="text-muted"><a href="#" class="link-secondary">Visit {{house.area}}</a></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}-->
+
+{% endblock %}
