@@ -46,4 +46,4 @@ def house(request, house_id):
     return render (request, 'Real_Estate/house.html', context)
 
 def contact(request):
-    pass
+    return render (request, 'Real_Estate/contact.html', {})
