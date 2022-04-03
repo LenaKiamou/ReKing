@@ -15,18 +15,19 @@
     <div class="row">
         <div class="col-md-6">
         <h4 class="pb-4">Φόρμα Επικοινωνίας</h4>
-        <form class="row g-3">
+        <form class="row g-3" method="POST">
+            {% csrf_token %}
             <div class="col-12">
-                <input type="text" class="form-control" placeholder="Ονοματεπώνυμο">
+                <input type="text" class="form-control" placeholder="Ονοματεπώνυμο" name="message_name">
             </div>
             <div class="col-md-6">
-                <input type="tel" class="form-control" placeholder="Τηλέφωνο Επικοινωνίας">
+                <input type="tel" class="form-control" placeholder="Τηλέφωνο Επικοινωνίας" name="message_phone">
             </div>
             <div class="col-md-6">
-            <input type="email" class="form-control" placeholder="Email">
+            <input type="email" class="form-control" placeholder="Email" name="message_email">
             </div>
             <div class="col-12">
-                <textarea class="form-control" rows="8" placeholder="Εισάγετε το θέμα σας"></textarea>
+                <textarea class="form-control" rows="8" placeholder="Εισάγετε το θέμα σας" name="message"></textarea>
             </div>
             <div class="col-12">
             <button type="submit" class="btn btn-secondary">Submit</button>

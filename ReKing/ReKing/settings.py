@@ -121,7 +121,17 @@ MEDIA_URL = ''
 MEDIA_ROOT = ''
 
 
-# Default primary key field type
+# Default primary key field type 
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import environ
+env = environ.Env()
+environ.Env.read_env()
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env('email_user')
+EMAIL_HOST_PASSWORD = env('email_pass')
+EMAIL_USE_TLS =  True

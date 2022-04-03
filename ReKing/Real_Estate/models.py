@@ -41,12 +41,12 @@ class House(models.Model):
     year_revovated = models.IntegerField("Έτος ανακαίνισης", null=True, blank=True)
     price = models.PositiveIntegerField("Τιμή")
     city = models.CharField("Πόλη", max_length=24)
+    district = models.CharField("Περιοχή", max_length=24)
     address = models.CharField("Οδός", max_length=24)
     number = models.IntegerField("Αριθμός")
     zipcode = models.IntegerField("T.K")
     description = models.TextField("Περιγραφή", max_length=5000, null=True, blank=True)
     image = models.ImageField(upload_to='Real_Estate/static/images/')
-    district = models.CharField("Περιοχή", max_length=24, null=True, blank=True)
     google_url = models.URLField("google_url", null=True, blank=True)
     more_features = models.ManyToManyField(Features, blank=True, verbose_name="Πρόσθετες παροχές")
 
