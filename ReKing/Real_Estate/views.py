@@ -44,3 +44,6 @@ def house(request, house_id):
 
     context = {'house': house, 'images': images, 'choices': choices, 'FLOOR_CHOICES': FLOOR_CHOICES}
     return render (request, 'Real_Estate/house.html', context)
+
+def contact(request):
+    pass
