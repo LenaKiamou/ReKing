@@ -2,7 +2,10 @@
 {% load static %}
 
 {% block body %}
-{{cities}}
+<div style="background-color:rgb(76, 142, 145);color:white;">
+  <h2 class="py-2 text-center">Ακίνητα</h2>
+</div>
+
 {% if search %}
 <div class="container text-center p-3">
     <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Εξερεύνηση</a>
@@ -64,32 +67,12 @@
               <p class="card-text">{% for choice in choices %}
                 {% if house.type == choice.0 %} {{ choice.1 }} {% endif %}
                  {% endfor %} / {{house.area}} τ.μ.</p>
-              <p class="card-text">{{house.city}}/{{house.district}}</p>
+              <p class="card-text">{{house.city}} / {{house.district}}</p>
             </div>
         </div>
       </div> 
     {% endfor %}
   </div>
 </div>
-
-<!--
-{% for house in houses %}
-
-<div class="card m-5" style="max-width:100%">
-    <div class="row g-0">
-      <div class="col-md-3">
-        <a class="link-dark" href="{%url 'house' house.id %}"><img src="{{house.image}}" class="img-fluid rounded-start" alt="..."></a>
-      </div>
-      <div class="col-md-6">
-        <div class="card-body">
-            <a class="link-dark" href="{%url 'house' house.id %}"><h3 class="card-title">{{house.price}}</h3></a>
-          <p class="card-text">{{house.description}}</p>
-          <p class="card-text"><small class="text-muted"><a href="#" class="link-secondary">Visit {{house.area}}</a></small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-{% endfor %}-->
 
 {% endblock %}

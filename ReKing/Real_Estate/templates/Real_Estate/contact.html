@@ -3,18 +3,14 @@
 
 {% block body %}
  
-
-<div style="background-color:rgb(157, 172, 162); color:white;" class="navbar ps-3">
-    <span><a href="{% url 'index' %}" style="text-decoration:none;color:white;">Αρχική</a> / Επικοινωνία</span> 
-</div>
-<div>
-    <h2 class="ps-3 pb-2" style="background-color:rgb(157, 172, 162);color:white;">Επικοινωνία</h2>
+<div style="background-color:rgb(76, 142, 145);color:white;">
+    <h2 class="py-2 text-center">Επικοινωνία</h2>
 </div>
 
-<div class="container text-center pt-4">
+<div class="container text-center pt-5">
     <div class="row">
         <div class="col-md-6">
-        <h4 class="pb-4">Φόρμα Επικοινωνίας</h4>
+        <h4 class="pb-4" style="text-shadow: 2px 2px rgb(138, 181, 184);">Φόρμα Επικοινωνίας</h4>
         <form class="row g-3" method="POST">
             {% csrf_token %}
             <div class="col-12">
@@ -30,13 +26,13 @@
                 <textarea class="form-control" rows="8" placeholder="Εισάγετε το θέμα σας" name="message"></textarea>
             </div>
             <div class="col-12">
-            <button type="submit" class="btn btn-secondary mb-4">Submit</button>
+            <button type="submit" class="btn btn-secondary mb-5">Submit</button>
             </div>
         </form>
         </div>
         <div class="col-md-6">
-            <h4 class="pb-4">Στοιχεία Επικοινωνίας</h4>
-            <h4 class="pt-5 pb-3"><i style="font-size:24px" class="fa">&#xf095;</i> (+30) 699 999999</h4>
+            <h4 class="pb-4" style="text-shadow: 2px 2px rgb(138, 181, 184);">Στοιχεία Επικοινωνίας</h4>
+            <h4 class="pt-3 pb-3"><i style="font-size:24px" class="fa">&#xf095;</i> (+30) 699 999999</h4>
             <h4 class="pb-3"><i class="material-icons">&#xe0be;</i> info@reking.gr</h4>
         </div>
     </div>
